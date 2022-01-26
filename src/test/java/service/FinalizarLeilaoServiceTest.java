@@ -40,6 +40,8 @@ public class FinalizarLeilaoServiceTest {
         Leilao leilao = leiloes.get(0);
         Assert.assertTrue(leilao.isFechado());
         Assert.assertEquals(new BigDecimal("900"), leilao.getLanceVencedor().getValor());
+
+        Mockito.verify(leilaoDao.salvar(leilao));
     }
 
     private List<Leilao> leiloes() {
