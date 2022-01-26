@@ -5,6 +5,7 @@ import br.com.alura.leilao.model.Lance;
 import br.com.alura.leilao.model.Leilao;
 import br.com.alura.leilao.model.Usuario;
 import br.com.alura.leilao.service.FinalizarLeilaoService;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mock;
@@ -35,6 +36,10 @@ public class FinalizarLeilaoServiceTest {
         Mockito.when(leilaoDao.buscarLeiloesExpirados()).thenReturn(leiloes);
 
         service.finalizarLeiloesExpirados();
+
+        Leilao leilao = leiloes.get(0);
+        Assert.assertTrue(leilao.isFechado());
+        Assert.assertEquals(new BigDecimal("900"), leilao.getLanceVencedor().getValor());
     }
 
     private List<Leilao> leiloes() {
