@@ -8,6 +8,7 @@ import br.com.alura.leilao.service.FinalizarLeilaoService;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.math.BigDecimal;
@@ -29,6 +30,10 @@ public class FinalizarLeilaoServiceTest {
 
     @Test
     void deveriaFinalizarUmLeilao() {
+        List<Leilao> leiloes = leiloes();
+
+        Mockito.when(leilaoDao.buscarLeiloesExpirados()).thenReturn(leiloes);
+
         service.finalizarLeiloesExpirados();
     }
 
