@@ -30,7 +30,7 @@ public class FinalizarLeilaoServiceTest {
     }
 
     @Test
-    void deveriaFinalizarUmLeilao() {
+    public void deveriaFinalizarUmLeilao() {
         List<Leilao> leiloes = leiloes();
 
         Mockito.when(leilaoDao.buscarLeiloesExpirados()).thenReturn(leiloes);
